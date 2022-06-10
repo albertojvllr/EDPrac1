@@ -1,6 +1,10 @@
 package linked_list;
 import java.util.Iterator;
 
+import excepcions.NoEsborrat;
+import excepcions.NoInserit;
+import excepcions.NoObtingut;
+import excepcions.NoTrobat;
 public class Linked_List<T extends Comparable<T>> implements Iterable<T>, TAD_Linked_List<T>{
 	
 	private Nodo inicio,fin;
@@ -31,56 +35,62 @@ public class Linked_List<T extends Comparable<T>> implements Iterable<T>, TAD_Li
 	public boolean EstBuit() {
 		return inicio==null;
 	}
-	public void Inserir(T dades) {
-		Nodo nou= new Nodo(dades);
-		if (!EstBuit()) {
-			if(fin.anterior==null) {
-				nou.anterior=inicio;
-				fin=nou;
-				inicio.siguiente=fin;
-				
-			}else {
-				fin.siguiente=nou;
-				nou.anterior=fin;
-				fin=nou;
-				
-			}
-			
-		}else {
-			inicio=new Nodo(dades, null, null);
-			fin=inicio;
-		}
-	}
-	public void Inserir(int posicio, T dades) {
-		Nodo posterioranou, actual, anterior;
-		posterioranou=inicio;
-		int x;
-		try {	
-				for(x=1; x<posicio; x++) {
-					posterioranou=posterioranou.siguiente;	
-				}
-				if(x==1) {
-					
-					actual=new Nodo(dades, null, inicio);
-					inicio.anterior=actual;
-					inicio=actual;
+	public void Inserir(T dades) throws NoInserit{
+		try {
+			Nodo nou= new Nodo(dades);
+			if (!EstBuit()) {
+				if(fin.anterior==null) {
+					nou.anterior=inicio;
+					fin=nou;
+					inicio.siguiente=fin;
 					
 				}else {
-					anterior=posterioranou.anterior;
-					actual=new Nodo(dades, anterior, posterioranou);
-					anterior.siguiente=actual;
-					posterioranou.anterior=actual;
+					fin.siguiente=nou;
+					nou.anterior=fin;
+					fin=nou;
+					
 				}
-	
-		}catch (Exception e) {
-			System.out.println("No s'ha pogut inserir");
+				
+			}else {
+				inicio=new Nodo(dades, null, null);
+				fin=inicio;
+			}
+			
+		} catch (Exception e) {
+			throw new NoInserit();
 		}
+	}
+	public void Inserir(int posicio, T dades) throws NoInserit{
+		Nodo posterioranou, actual, anterior;
+		posterioranou=inicio;
+		int x;	
+		try {
+			for(x=1; x<posicio; x++) {
+				posterioranou=posterioranou.siguiente;	
+			}
+			if(x==1) {
+				
+				actual=new Nodo(dades, null, inicio);
+				inicio.anterior=actual;
+				inicio=actual;
+				
+			}else {
+				anterior=posterioranou.anterior;
+				actual=new Nodo(dades, anterior, posterioranou);
+				anterior.siguiente=actual;
+				posterioranou.anterior=actual;
+			}
+		
+		} catch (Exception e) {
+			throw new NoInserit();
+		}
+	
 
 	}	
 
-	public T Obtenir (int posicio) {
+	public T Obtenir (int posicio) throws NoObtingut{
 		Nodo actual=inicio;
-
+		try {
 			for (int x=0;x<posicio-1;x++) {
 				if(actual.siguiente!=null) {
 					actual=actual.siguiente;						
@@ -89,7 +99,10 @@ public class Linked_List<T extends Comparable<T>> implements Iterable<T>, TAD_Li
 					actual.dades=(inicio.dades);
 				}
 			}	
-		
+
+		} catch (Exception e) {
+			throw new NoObtingut();
+		}
 		return (actual.dades);
 	}
 	
@@ -103,42 +116,50 @@ public class Linked_List<T extends Comparable<T>> implements Iterable<T>, TAD_Li
 		return (longitud);
 	}
 
-	public void Esborrar (int posicio) {
+	public void Esborrar (int posicio) throws NoEsborrat{
 		Nodo actual=inicio;
 		Nodo anterior, posterior;
-		
-		for (int x=0;x<posicio-1;x++) {
-			if(actual.siguiente!=null) {
-				actual=actual.siguiente;						
+		try {
+			for (int x=0;x<posicio-1;x++) {
+				if(actual.siguiente!=null) {
+					actual=actual.siguiente;						
+				}
 			}
-		}
-
-		anterior=actual.anterior;
-		posterior=actual.siguiente;
-		if (actual.anterior==null) {
-			posterior.anterior=null;
-			actual.siguiente=null;
-			inicio=posterior;
-		}else {
-			if (actual.siguiente==null) {
-				anterior.siguiente=null;
-				actual.anterior=null;
-				fin=anterior;
-			}else {
-				anterior.siguiente=posterior;
-				posterior.anterior=anterior;
+			
+			anterior=actual.anterior;
+			posterior=actual.siguiente;
+			if (actual.anterior==null) {
+				posterior.anterior=null;
 				actual.siguiente=null;
-				actual.anterior=null;
+				inicio=posterior;
+			}else {
+				if (actual.siguiente==null) {
+					anterior.siguiente=null;
+					actual.anterior=null;
+					fin=anterior;
+				}else {
+					anterior.siguiente=posterior;
+					posterior.anterior=anterior;
+					actual.siguiente=null;
+					actual.anterior=null;
+				}
 			}
+			
+		} catch (Exception e) {
+			throw new NoEsborrat();
 		}
 
 	}
-	public int Buscar(T data) {
+	public int Buscar(T data) throws NoTrobat {
 		int contador=1;
 		Nodo actual=inicio;
-		while (actual.siguiente!=null && (actual.dades.compareTo(data)==-1)) {
-			actual=actual.siguiente;
-			contador++;
+		try {
+			while (actual.siguiente!=null && (actual.dades.compareTo(data)==-1)) {
+				actual=actual.siguiente;
+				contador++;
+			}			
+		} catch (Exception e) {
+			throw new NoTrobat(contador);
 		}
 		
 		return (contador);

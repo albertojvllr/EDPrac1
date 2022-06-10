@@ -1,6 +1,8 @@
 package linked_list;
 import java.util.Iterator;
 
+import excepcions.NoObtingut;
+
 public class IteratorLL<T extends Comparable<T>> implements Iterator<T>{
 
     private Linked_List<T> llista;
@@ -29,9 +31,13 @@ public class IteratorLL<T extends Comparable<T>> implements Iterator<T>{
     public T next(){
         
         T aux = null;
+        	try {
+				aux = llista.Obtenir(comptador);
+			} catch (NoObtingut e) {
+				e.printStackTrace();
+			}
+        	comptador++;
 
-        aux = llista.Obtenir(comptador);
-        comptador++;
         
         return aux;
     }

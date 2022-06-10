@@ -1,4 +1,5 @@
 package linked_list;
+import excepcions.*;
 import java.util.InputMismatchException;
 import java.util.Iterator;
 import java.util.Scanner;
@@ -7,7 +8,8 @@ public class edprac1 {
 	private static int opcio = -1;
 	private static Scanner sc = new Scanner(System.in);
 
-	public static void main(String[] args) {
+	public static void main(String[] args) throws NoTrobat, NoInserit, NoEsborrat, NoObtingut
+	{
 
 		boolean fi = false, trobat = false;
 
@@ -45,13 +47,13 @@ public class edprac1 {
 				System.out.println("Introdueix el DNI del ciutada");
 				DNI = sc.nextLine();
 
-				if (nom == null || nom.trim().equals("")) {
+				if (nom == null || nom.equals("\n")) {
 					nom = ctd1.getNom();
 				}
-				if (cognom == null || cognom.trim().equals("")) {
+				if (cognom == null || cognom.equals("")) {
 					cognom = ctd1.getCognom();
 				}
-				if (DNI == null || DNI.trim().equals("")) {
+				if (DNI == null || DNI.equals("")) {
 					DNI = ctd1.getDNI();
 				}
 
