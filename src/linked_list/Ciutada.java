@@ -1,4 +1,5 @@
-public class Ciutada implements Comparable<Ciutada>{
+package linked_list;
+public class Ciutada implements TAD_Ciutada, Comparable<Ciutada>{
 
     private String nom;
     private String cognom;
@@ -41,7 +42,7 @@ public class Ciutada implements Comparable<Ciutada>{
     
     /**
      * Getter del cognom
-     * @return retorna el cognom
+     * @return cognom del ciutada
      */
     public String getCognom() {
         return cognom;
@@ -49,7 +50,7 @@ public class Ciutada implements Comparable<Ciutada>{
 
     /**
      * Setter del cognom
-     * @param cognom cognom del ciutada
+     * @param cognom del ciutada
      */
     public void setCognom(String cognom) {
         this.cognom = cognom;
@@ -57,7 +58,7 @@ public class Ciutada implements Comparable<Ciutada>{
 
     /**
      * Getter del DNI
-     * @return el DNI
+     * @return DNI del ciutada
      */
     public String getDNI() {
         return DNI;
@@ -65,7 +66,7 @@ public class Ciutada implements Comparable<Ciutada>{
 
     /**
      * Setter del DNI
-     * @param DNI DNI del ciutada
+     * @param DNI del ciutada
      */
     public void setDNI(String DNI) {
         this.DNI = DNI;

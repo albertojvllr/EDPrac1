@@ -1,6 +1,7 @@
+package linked_list;
 import java.util.Iterator;
 
-public class Linked_List<T extends Comparable<T>> implements Iterable<T>{
+public class Linked_List<T extends Comparable<T>> implements Iterable<T>, TAD_Linked_List<T>{
 	
 	private Nodo inicio,fin;
 
@@ -20,7 +21,7 @@ public class Linked_List<T extends Comparable<T>> implements Iterable<T>{
 			this(dades, null, null);
 		}
 	}
-
+	@Override
 	public void Crear() {
 		inicio=null;
 		fin=inicio;
@@ -77,7 +78,7 @@ public class Linked_List<T extends Comparable<T>> implements Iterable<T>{
 
 	}	
 
-	T Obtenir (int posicio) {
+	public T Obtenir (int posicio) {
 		Nodo actual=inicio;
 
 			for (int x=0;x<posicio-1;x++) {
@@ -92,7 +93,7 @@ public class Linked_List<T extends Comparable<T>> implements Iterable<T>{
 		return (actual.dades);
 	}
 	
-	int Longitud(Linked_List<T> llista) {
+	public int Longitud(Linked_List<T> llista) {
 		Nodo actual=inicio;
 		int longitud=1;
 		while (actual.siguiente!=null) {
@@ -132,7 +133,7 @@ public class Linked_List<T extends Comparable<T>> implements Iterable<T>{
 		}
 
 	}
-	int Buscar(T data) {
+	public int Buscar(T data) {
 		int contador=1;
 		Nodo actual=inicio;
 		while (actual.siguiente!=null && (actual.dades.compareTo(data)==-1)) {
