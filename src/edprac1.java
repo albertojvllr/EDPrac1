@@ -17,7 +17,7 @@ public class edprac1 {
 		llistaCiutadans.Inserir(ctd1);
 		Ciutada aux = null;
 		Iterator<Ciutada> it = null;
-		int posicio = 1;
+		int posicio = 0;
 		while (!fi) {
 
 			try {
