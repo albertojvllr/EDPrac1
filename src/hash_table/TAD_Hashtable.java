@@ -10,7 +10,7 @@ public interface TAD_Hashtable<T extends Comparable<T>,K extends Comparable<K>>{
 	/**
 	 * Constructor per inicialitzar la taula
 	 */
-	public void Crear();
+	public void Crear(int mida);
 
 	/**
 	 * Funcio per inserir un element a la taula de Hash, si un element ja existeix, l'actualitza

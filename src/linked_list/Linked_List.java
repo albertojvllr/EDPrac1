@@ -24,6 +24,7 @@ public class Linked_List<T extends Comparable<T>> implements Iterable<T>, TAD_Li
 		public Nodo(T dades) {
 			this(dades, null, null);
 		}
+
 	}
 	@Override
 	public void Crear() {

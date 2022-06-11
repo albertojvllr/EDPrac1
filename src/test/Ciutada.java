@@ -2,7 +2,7 @@ package test;
 
 public class Ciutada implements TAD_Ciutada, Comparable<Ciutada>{
 
-    private String nom;
+	private String nom;
     private String cognom;
     private String DNI;
     
