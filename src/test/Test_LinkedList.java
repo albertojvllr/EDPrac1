@@ -1,10 +1,12 @@
-package linked_list;
+package test;
 import excepcions.*;
+import linked_list.Linked_List;
+
 import java.util.InputMismatchException;
 import java.util.Iterator;
 import java.util.Scanner;
 
-public class edprac1 {
+public class Test_LinkedList {
 	private static int opcio = -1;
 	private static Scanner sc = new Scanner(System.in);
 

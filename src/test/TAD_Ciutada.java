@@ -1,4 +1,4 @@
-package linked_list;
+package test;
 
 public interface TAD_Ciutada {
 

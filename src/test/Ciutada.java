@@ -1,4 +1,5 @@
-package linked_list;
+package test;
+
 public class Ciutada implements TAD_Ciutada, Comparable<Ciutada>{
 
     private String nom;
