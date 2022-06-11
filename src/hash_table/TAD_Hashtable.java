@@ -1,5 +1,8 @@
 package hash_table;
-public interface TAD_Hashtable<K,T> {
+
+import excepcions.NoInserit;
+
+public interface TAD_Hashtable<T extends Comparable<T>,K extends Comparable<K>>{
 	/**
 	 * Constructor per inicialitzar la taula
 	 */
@@ -10,7 +13,7 @@ public interface TAD_Hashtable<K,T> {
 	 * @param La clau del ciutada
 	 * @param Les dades del ciutada
 	 */
-	public void Inserir(K key, T data);
+	public void Inserir(K key, T data) throws NoInserit;
 	
 	/**
 	 * Retorna l'element que te la clau K
