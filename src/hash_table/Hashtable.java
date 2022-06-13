@@ -82,7 +82,7 @@ public class Hashtable<T extends Comparable<T>, K extends Comparable<K>> impleme
 				x++;
 			}
 		}
-		throw new NoTrobat(x);
+		throw new NoTrobat();
 	}
 
 	@Override
